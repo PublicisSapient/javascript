@@ -1,0 +1,25 @@
+{
+  "name": "eslint-config-publicissapient",
+  "version": "0.0.1",
+  "description": "ESLint config used by PublicisSapient engineering teams.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PublicisSapient/javascript.git"
+  },
+  "keywords": [
+    "eslint",
+    "javascript",
+    "styleguide",
+    "config"
+  ],
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/PublicisSapient/javascript/issues"
+  },
+  "homepage": "https://github.com/PublicisSapient/javascript#readme"
+}
