@@ -1,6 +1,6 @@
 {
-  "name": "eslint-config-publicissapient",
-  "version": "0.0.1",
+  "name": "@publicissapient/eslint-config-publicissapient-base",
+  "version": "0.0.2",
   "description": "ESLint config used by PublicisSapient engineering teams.",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "styleguide",
     "config"
   ],
-  "author": "",
+  "author": "David Jackson <iamdavidjackson>",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/PublicisSapient/javascript/issues"

@@ -1,5 +1,7 @@
 # PublicisSapient Javascript Styleguide
 
+A Javascript styleguide written from an enterprise perspective.
+
 ## Table of Contents
 
   1. [Accessors](#accessors)
@@ -12,7 +14,7 @@
 
   This pattern looks promising but has too many drawbacks to be used on a large project.  Spelling mistakes will not trigger errors with `set` calls.  This can be avoided by using normal functions instead of getters and setters.
   
-    ```javascript
+  ```javascript
     // bad
     class User {
       this.firstName = 'David';
@@ -67,5 +69,4 @@
 
     // And it's more obvious that you're calling a function like this
     user.setFullName('David Jackson');
-
-    ```
+  ```
