@@ -7,5 +7,11 @@ module.exports = {
     */
 
     'accessor-pairs': 'off',
+
+    /*
+    // This requires a return statement to be used in all the Array methods.
+    */
+
+    'array-callback-return': 'error'
   }
 };

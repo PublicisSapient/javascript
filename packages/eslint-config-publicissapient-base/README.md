@@ -11,6 +11,6 @@ npm install @publicissapient/eslint-config-publicissapient-base --save-dev
 Then add this to your configuration
 ```
 {
-  "extends": "@publicissapient/eslint-config-publicsapient-base"
+  "extends": "@publicissapient/publicissapient-base"
 }
 ```
