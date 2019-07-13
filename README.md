@@ -17,8 +17,10 @@ A Javascript styleguide written from an enterprise perspective.
   ```javascript
     // bad
     class User {
-      this.firstName = 'David';
-      this.lastName = 'Jackson';
+      constructor() {
+        this.firstName = 'David';
+        this.lastName = 'Jackson';
+      }
 
       get fullName() {
         return `${this.firstName} ${this.lastName}`;
@@ -35,10 +37,10 @@ A Javascript styleguide written from an enterprise perspective.
     
     // An error will be thrown for spelling mistakes on getters
     // TypeError: undefined is not a function
-    user.getFulName()
+    user.getFulName();
 
     // However since an object property can be named anything it will not be thrown on setters
-    user.setFulName = 'David Jackson'
+    user.setFulName = 'David Jackson';
 
     // good
     class User {
@@ -62,10 +64,10 @@ A Javascript styleguide written from an enterprise perspective.
     
     // An error will be thrown for spelling mistakes on getters
     // TypeError: undefined is not a function
-    user.getFulName()
+    user.getFulName();
 
     // An error will also be thrown here as well 
-    user.setFulName('David Jackson')
+    user.setFulName('David Jackson');
 
     // And it's more obvious that you're calling a function like this
     user.setFullName('David Jackson');
