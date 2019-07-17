@@ -5,6 +5,7 @@ A Javascript styleguide written from an enterprise perspective.
 ## Table of Contents
 
   1. [Accessors](#accessors)
+  2. [Arrays](#arrays)
 
 ## Accessors
   MDN web docs: [`getter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) [`setter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
@@ -18,8 +19,8 @@ A Javascript styleguide written from an enterprise perspective.
     // bad
     class User {
       constructor() {
-        this.firstName = 'David';
-        this.lastName = 'Jackson';
+        this.firstName = 'John';
+        this.lastName = 'Smith';
       }
 
       get fullName() {
@@ -37,16 +38,16 @@ A Javascript styleguide written from an enterprise perspective.
     
     // An error will be thrown for spelling mistakes on getters
     // TypeError: undefined is not a function
-    user.getFulName();
+    console.log(user.fulName);
 
     // However since an object property can be named anything it will not be thrown on setters
-    user.setFulName = 'David Jackson';
+    user.fulName = 'John Smith';
 
     // good
     class User {
       constructor() {
-        this.firstName = 'James';
-        this.lastName = 'Bond';
+        this.firstName = 'John';
+        this.lastName = 'Smith';
       }
 
       getFullName() {
@@ -67,8 +68,175 @@ A Javascript styleguide written from an enterprise perspective.
     user.getFulName();
 
     // An error will also be thrown here as well 
-    user.setFulName('David Jackson');
+    user.setFulName('John Smith');
 
     // And it's more obvious that you're calling a function like this
-    user.setFullName('David Jackson');
+    user.setFullName('John Smith');
+  ```
+
+  ## Arrays
+  MDN web docs: [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) ESLint rules: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return) [`no-sparse-arrays`](https://eslint.org/docs/rules/no-sparse-arrays) [`array-bracket-newline`](https://eslint.org/docs/rules/array-bracket-newline) [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing) [`array-element-newline`](https://eslint.org/docs/rules/array-element-newline) [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
+
+  Create arrays using the literal notation instead of the constructor.
+  ```javascript
+    // bad
+    const planets = new Array();
+
+    // good
+    const planets = [];
+  ```
+
+  Don't use spaces after open and before close brackets when creating an array.
+  ```javascript
+    // bad
+    const planets = [ 'Mercury', 'Venus', 'Earth' ];
+
+    // good
+    const planets = ['Mercury', 'Venus', 'Earth'];
+  ```
+
+  If there are more than 5 elements in an array use line breaks to put each value on their own line.
+  ```javascript
+    // bad
+    const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn'];
+
+    // bad
+    const planets = ['Mercury', 'Venus', 'Earth',
+      'Mars',
+      'Jupiter',
+      'Saturn'
+    ];
+
+    // good
+    const planets = [
+      'Mercury',
+      'Venus',
+      'Earth',
+      'Mars',
+      'Jupiter',
+      'Saturn'
+    ];
+
+    // good
+    const planets = [
+      {
+        name: 'Mercury',
+        color: 'red'
+      },
+      {
+        name: 'Venus',
+        color: 'blue'
+      },
+      {
+        name: 'Mars',
+        color: 'red'
+      },
+      {
+        name: 'Earth',
+        color: 'blue'
+      },
+      {
+        name: 'Jupiter',
+        color: 'brown'
+      },
+      {
+        name: 'Saturn',
+        color: 'orange'
+      }
+    ];
+  ```
+
+  Get the value of an item in an Array by using the index.
+
+  ```javascript
+    const venus = planets[1];
+    const earth = planets[2];
+  ```
+
+  Loop through Arrays using the `forEach` method
+
+  ```javascript
+    planets.forEach((planet, index) => {
+      console.log(planet.name, index);
+    });
+  ```
+
+  Add items to an Array using the `push` method.
+
+  ```javascript
+    planets.push({
+      name: 'Uranus',
+      color: 'blue'
+    });
+  ```
+
+  Combine two or more Arrays using ... notation.
+
+  ```javascript
+    const array1 = [1, 2, 3];
+    const array2 = [4, 5, 6];
+
+    const combinedArray = [...array1, ...array2];
+    // expected output: [1, 2, 3, 4, 5, 6]
+  ```
+
+  Create an Array from any array-like iterable using `from`.  Array-like iterables include things like: `String`, `Set`, `Map`, and `arguments`.
+
+  ```javascript
+    // create an array from a String
+    const letters = Array.from('mars');
+    // expected output: ['m', 'a', 'r', 's']
+  ```
+
+  Use a return statement with Array methods `every`, `filter`, `find`, `findIndex`, `map`, `reduce`, `reduceRight`, `some`, `sort`.
+
+  ```javascript
+    const numbers = [1, 2, 3];
+
+    // check if all the items in the Array are less than 10 with .every()
+    const allLessThanTen = numbers.every(element => {
+      return element < 10;
+    });
+    // expected output: true
+
+    // get all the items in the Array that are greater than 1 with .filter()
+    const greaterThanOne = numbers.filter(element => {
+      return element > 1;
+    });
+
+    // find the first item greater than 1 with .find()
+    const first = numbers.find(element => {
+      return element > 1;
+    });
+    // expected output: 2
+
+    // find the index of the first item greater than 1 with .findIndex()
+    const firstIndex = numbers.findIndex(element => {
+      return element > 1;
+    });
+    // expected output: 1
+
+    // Create a new Array with double all the numbers in the Array with .map()
+    const doubleNumbers = numbers.map(element => {
+      return element * 2;
+    });
+    // expected output: [2, 4, 6]
+
+    // calculate the sum of all items using .reduce()
+    const sum = numbers.reduce((accumulator, element) => {
+      return accumulator + element
+    });
+    // expected output: 6
+
+    // check if at least one item in the Array is less than 10 with .some()
+    const someLessThanTen = numbers.some(element => {
+      return element < 10;
+    });
+    // expected output: true
+
+    // sort a list of words by their length with .sort()
+    const sortedWords = ['Orange', 'Grape', 'Strawberry'].sort((a, b) => {
+      // if returned value is less than 0 then 'a' is sorted before 'b' otherwise 'b' is sorted before 'a'
+        return a.length - b.length; 
+    });
   ```
