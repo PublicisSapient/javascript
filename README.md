@@ -199,10 +199,11 @@ A Javascript styleguide written from an enterprise perspective.
     });
     // expected output: true
 
-    // get all the items in the Array that are greater than 1 with .filter()
+    // Create a new Array with all the items in the Array that are greater than 1 with .filter()
     const greaterThanOne = numbers.filter(element => {
       return element > 1;
     });
+    // expected output: [2, 3]
 
     // find the first item greater than 1 with .find()
     const first = numbers.find(element => {
@@ -239,4 +240,5 @@ A Javascript styleguide written from an enterprise perspective.
       // if returned value is less than 0 then 'a' is sorted before 'b' otherwise 'b' is sorted before 'a'
         return a.length - b.length; 
     });
+    // expected output: ['Grape', 'Orange', 'Strawberry']
   ```
