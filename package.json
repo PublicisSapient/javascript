@@ -4,6 +4,7 @@
   "description": "Javascript styleguide from an enterprise perspective.",
   "main": "index.js",
   "scripts": {
+    "lint": "markdownlint --config .markdownlint.json README.md */README.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/PublicisSapient/javascript/issues"
   },
-  "homepage": "https://github.com/PublicisSapient/javascript#readme"
+  "homepage": "https://github.com/PublicisSapient/javascript#readme",
+  "devDependencies": {
+    "markdownlint-cli": "^0.13.0"
+  }
 }
