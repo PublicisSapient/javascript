@@ -10,18 +10,17 @@ A Javascript styleguide written from an enterprise perspective.
   - [Arrays](#arrays)
   - [Whitespace](#whitespace)
   - [Comparison Operators & Equality](#comparison-operators--equality)
- 
 
 ## Accessors
 
 MDN web docs:
 
-* [`getter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
-* [`setter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
+- [`getter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
+- [`setter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
 
 ESLint rules:
 
-* [`accessor-pairs`](https://eslint.org/docs/rules/accessor-pairs)
+- [`accessor-pairs`](https://eslint.org/docs/rules/accessor-pairs)
 
 Accessors are more commonly referred to as getters and setters.  The `get` and `set` syntax binds an object property to a function that will be called when that property is looked up or assigned a value.  
 
@@ -91,16 +90,16 @@ This pattern looks promising but has too many drawbacks to be used on a large pr
 
 MDN web docs:
   
-* [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
   
 ESLint rules:
 
-* [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
-* [`no-sparse-arrays`](https://eslint.org/docs/rules/no-sparse-arrays)
-* [`array-bracket-newline`](https://eslint.org/docs/rules/array-bracket-newline)
-* [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
-* [`array-element-newline`](https://eslint.org/docs/rules/array-element-newline)
-* [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
+- [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
+- [`no-sparse-arrays`](https://eslint.org/docs/rules/no-sparse-arrays)
+- [`array-bracket-newline`](https://eslint.org/docs/rules/array-bracket-newline)
+- [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
+- [`array-element-newline`](https://eslint.org/docs/rules/array-element-newline)
+- [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
 
 Create arrays using the literal notation instead of the constructor.
 
@@ -277,13 +276,13 @@ Use a return statement with Array methods `every`, `filter`, `find`, `findIndex`
 
 ESLint rules:
 
-* TODO: spaces/tabs ([`indent`](https://eslint.org/docs/rules/indent.html))
-* [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks.html)
-* [`space-before-function-paren`](space-before-function-paren)
-* [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing)
-* [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops.html)
-* [`comma-spacing`](http://eslint.org/docs/rules/comma-spacing)
-* [`no-multiple-empty-lines`](http://eslint.org/docs/rules/no-multiple-empty-lines)
+- TODO: spaces/tabs ([`indent`](https://eslint.org/docs/rules/indent.html))
+- [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks.html)
+- [`space-before-function-paren`](space-before-function-paren)
+- [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing)
+- [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops.html)
+- [`comma-spacing`](http://eslint.org/docs/rules/comma-spacing)
+- [`no-multiple-empty-lines`](http://eslint.org/docs/rules/no-multiple-empty-lines)
 
 Use a space before the opening brace of a block.
 
@@ -299,7 +298,7 @@ Use a space before the opening brace of a block.
   }
 ```
 
-Do not use a space between the argument list and the function name in function calls and declarations. 
+Do not use a space between the argument list and the function name in function calls and declarations.
 
 ```javascript
   // bad
@@ -323,7 +322,7 @@ Use a space before opening parenthesis in control statements (`if`, `while`, etc
   if (condition) { ... }
 ```
 
-Use spaces between operators. 
+Use spaces between operators.
 
 ```javascript
   // bad
@@ -375,6 +374,7 @@ Leave a blank line between a block and the next statement.
 
   return message;
 ```
+
 ```javascript
   // bad
   const dog = {
@@ -401,20 +401,20 @@ Leave a blank line between a block and the next statement.
 
 MDN web docs:
   
-* [`Equality Comparisons and Sameness`](https://developer.mozilla.org/en/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+- [`Equality Comparisons and Sameness`](https://developer.mozilla.org/en/docs/Web/JavaScript/Equality_comparisons_and_sameness)
   
 ESLint rules:
 
-* [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq.html)
-* [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary.html)
-* [`no-unneeded-ternary`](https://eslint.org/docs/4.0.0/rules/no-unneeded-ternary)
+- [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq.html)
+- [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary.html)
+- [`no-unneeded-ternary`](https://eslint.org/docs/4.0.0/rules/no-unneeded-ternary)
 
 Use `===` and `!==` over `==` and `!=`
 
 ```javascript
 ```
 
-* Use shortcuts for booleans, but explicit comparisons for strings and numbers
+- Use shortcuts for booleans, but explicit comparisons for strings and numbers
 
 ```javascript
   // bad
@@ -436,7 +436,7 @@ Use `===` and `!==` over `==` and `!=`
   if (items.length > 0) { ... }
 ```
 
-* Do not nest ternary expressions
+- Do not nest ternary expressions
 
 ```javascript
   // bad
@@ -447,7 +447,7 @@ Use `===` and `!==` over `==` and `!=`
   // good
   const thing = foo ? bar : foobar;
 
-  // good 
+  // good
   let thing;
 
   if (foo) {
@@ -459,7 +459,7 @@ Use `===` and `!==` over `==` and `!=`
   }
 ```
 
-* Do not use ternary expressions when simpler alternatives exist
+- Do not use ternary expressions when simpler alternatives exist
 
 ```javascript
   // bad
@@ -474,7 +474,7 @@ Use `===` and `!==` over `==` and `!=`
 
   // good
   const isOdd = value % 2 !== 0;
-``` 
+```
 
 ```javascript
   // bad
