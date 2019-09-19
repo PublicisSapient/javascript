@@ -11,6 +11,10 @@ module.exports = {
     // Array methods are specifically made to return Arrays so if no return
     // is required then a for/forEach loop is more appropriate.
 
-    'array-callback-return': 'error'
+    'array-callback-return': 'error',
+
+    // Use scrict comparisons (ie. ===, not ==)
+    
+    'eqeqeq': ['error', 'always'],
   }
 };

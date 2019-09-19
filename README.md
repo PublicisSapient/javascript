@@ -4,19 +4,23 @@ A Javascript styleguide written from an enterprise perspective.
 
 ## Table of Contents
 
-1. [Accessors](#accessors)
-2. [Arrays](#arrays)
+- [PublicisSapient Javascript Styleguide](#publicissapient-javascript-styleguide)
+  - [Table of Contents](#table-of-contents)
+  - [Accessors](#accessors)
+  - [Arrays](#arrays)
+  - [Whitespace](#whitespace)
+  - [Comparison Operators & Equality](#comparison-operators--equality)
 
 ## Accessors
 
 MDN web docs:
 
-* [`getter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
-* [`setter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
+- [`getter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
+- [`setter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
 
 ESLint rules:
 
-* [`accessor-pairs`](https://eslint.org/docs/rules/accessor-pairs)
+- [`accessor-pairs`](https://eslint.org/docs/rules/accessor-pairs)
 
 Accessors are more commonly referred to as getters and setters.  The `get` and `set` syntax binds an object property to a function that will be called when that property is looked up or assigned a value.  
 
@@ -86,16 +90,16 @@ This pattern looks promising but has too many drawbacks to be used on a large pr
 
 MDN web docs:
   
-* [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
   
 ESLint rules:
 
-* [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
-* [`no-sparse-arrays`](https://eslint.org/docs/rules/no-sparse-arrays)
-* [`array-bracket-newline`](https://eslint.org/docs/rules/array-bracket-newline)
-* [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
-* [`array-element-newline`](https://eslint.org/docs/rules/array-element-newline)
-* [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
+- [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
+- [`no-sparse-arrays`](https://eslint.org/docs/rules/no-sparse-arrays)
+- [`array-bracket-newline`](https://eslint.org/docs/rules/array-bracket-newline)
+- [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
+- [`array-element-newline`](https://eslint.org/docs/rules/array-element-newline)
+- [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
 
 Create arrays using the literal notation instead of the constructor.
 
@@ -266,4 +270,216 @@ Use a return statement with Array methods `every`, `filter`, `find`, `findIndex`
       return a.length - b.length;
   });
   // expected output: ['Grape', 'Orange', 'Strawberry']
+```
+
+## Whitespace
+
+ESLint rules:
+
+- TODO: spaces/tabs ([`indent`](https://eslint.org/docs/rules/indent.html))
+- [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks.html)
+- [`space-before-function-paren`](space-before-function-paren)
+- [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing)
+- [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops.html)
+- [`comma-spacing`](http://eslint.org/docs/rules/comma-spacing)
+- [`no-multiple-empty-lines`](http://eslint.org/docs/rules/no-multiple-empty-lines)
+
+Use a space before the opening brace of a block.
+
+```javascript
+  // bad
+  function test(){
+    console.log('test');
+  }
+
+  // good
+  function test() {
+    console.log('test');
+  }
+```
+
+Do not use a space between the argument list and the function name in function calls and declarations.
+
+```javascript
+  // bad
+  function marco () {
+    console.log ('polo');
+  }
+
+  // good
+  function marco() {
+    console.log('polo');
+  }
+```
+
+Use a space before opening parenthesis in control statements (`if`, `while`, etc.).
+
+```javascript
+  // bad
+  if(condition) { ... }
+
+  // good
+  if (condition) { ... }
+```
+
+Use spaces between operators.
+
+```javascript
+  // bad
+  const a=b+10;
+
+  // good
+  const a = b + 10;
+```
+
+Use a space after commas.
+
+```javascript
+  // bad
+  const list = [1,2,3,4]
+  function fullName (firstName,lastName) { ... }
+
+  // good
+  const list = [1, 2, 3, 4]
+  function fullName (firstName, lastName) { ... }
+```
+
+Do not leave multiple blank lines.
+
+```javascript
+  // bad
+  const value = 'hello world';
+
+
+  console.log(value);
+
+  // good
+  const value = 'hello world';
+  console.log(value);
+```
+
+Leave a blank line between a block and the next statement.
+
+```javascript
+  // bad
+  if (valid) {
+    return value;
+  }
+  return message;
+
+  // good
+  if (valid) {
+    return value;
+  }
+
+  return message;
+```
+
+```javascript
+  // bad
+  const dog = {
+    run() {
+    },
+    bark() {
+    },
+  };
+  return obj;
+
+  // good
+  const dog = {
+    run() {
+    },
+
+    bark() {
+    },
+  };
+
+  return obj;
+```
+
+## Comparison Operators & Equality
+
+MDN web docs:
+  
+- [`Equality Comparisons and Sameness`](https://developer.mozilla.org/en/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+  
+ESLint rules:
+
+- [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq.html)
+- [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary.html)
+- [`no-unneeded-ternary`](https://eslint.org/docs/4.0.0/rules/no-unneeded-ternary)
+
+Use `===` and `!==` over `==` and `!=`
+
+```javascript
+```
+
+- Use shortcuts for booleans, but explicit comparisons for strings and numbers
+
+```javascript
+  // bad
+  if (isLoaded === true) { ... }
+
+  // good
+  if (isLoaded) { ... }
+
+  // bad
+  if (value) { ... }
+
+  // good
+  if (value !== '') { ... }
+
+  // bad
+  if (items.length) { ... }
+
+  // good
+  if (items.length > 0) { ... }
+```
+
+- Do not nest ternary expressions
+
+```javascript
+  // bad
+  const thing = foo ? bar : baz === qux ? quxx : foobar;
+```
+
+```javascript
+  // good
+  const thing = foo ? bar : foobar;
+
+  // good
+  let thing;
+
+  if (foo) {
+    thing = bar;
+  } else if (baz === qux) {
+    thing = quxx;
+  } else {
+    thing = foobar;
+  }
+```
+
+- Do not use ternary expressions when simpler alternatives exist
+
+```javascript
+  // bad
+  const isEven = (value % 2 === 0) ? true : false;
+
+  // good
+  const isEven = value % 2 === 0;
+
+
+  // bad
+  const isOdd = (value % 2 === 0) ? false : true;
+
+  // good
+  const isOdd = value % 2 !== 0;
+```
+
+```javascript
+  // bad
+  const value = newNumber ? newNumber : 1;
+
+  // good
+  const value = newNumber || 1;
 ```
