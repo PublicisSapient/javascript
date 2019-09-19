@@ -19,6 +19,20 @@ module.exports = {
 
    // This requires arrays to be created using literal notation.
 
-   'no-array-constructor': 'error'
+   'no-array-constructor': 'error',
+
+   // Only single quotes for strings
+
+   'quotes': ['error', 'single'],
+
+   // Use template literals for concatenating strings
+
+   'prefer-template': 'error',
+
+   // No spaces allowed in template literals
+   'template-curly-spacing': 'error',
+   
+   // Escaping non-special characters in strings, template literals, and regular expressions doesn’t have any effect
+   'no-useless-escape': ['error', 'never']
   }
 };

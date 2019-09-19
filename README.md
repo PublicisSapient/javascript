@@ -6,6 +6,7 @@ A Javascript styleguide written from an enterprise perspective.
 
 1. [Accessors](#accessors)
 2. [Arrays](#arrays)
+3. [Strings](#strings)
 
 ## Accessors
 
@@ -266,4 +267,87 @@ Use a return statement with Array methods `every`, `filter`, `find`, `findIndex`
       return a.length - b.length;
   });
   // expected output: ['Grape', 'Orange', 'Strawberry']
+
+```
+
+## Strings
+
+MDN Web Docs:
+
+* [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+ESLint Rules:
+
+* [`quotes`](https://eslint.org/docs/rules/quotes.html)
+* [`prefer-template`](https://eslint.org/docs/rules/prefer-template)
+* [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
+* [`no-eval`](https://eslint.org/docs/rules/no-eval)
+* [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
+
+Use single quotes '' for strings.
+
+```javascript
+// bad
+const name = "I am a string";
+
+// bad - template literals should contain interpolation or newlines
+const name = `I am a string`;
+
+// good
+const name = 'I am a string';
+```
+
+Strings that cause the line to go over 100 characters should not be written across multiple lines using string concatenation.
+
+```javascript
+// bad
+const errorMessage = 'This is a super long error that was thrown because \
+of Batman. When you stop to think about how Batman had anything to do \
+with this, you would get nowhere \
+fast.';
+
+// bad
+const errorMessage = 'This is a super long error that was thrown because ' +
+  'of Batman. When you stop to think about how Batman had anything to do ' +
+  'with this, you would get nowhere fast.';
+
+// good
+const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+```
+
+When programmatically building up strings, use template strings instead of concatenation.
+
+```javascript
+// bad
+function sayHi(name) {
+  return 'How are you, ' + name + '?';
+}
+
+// bad
+function sayHi(name) {
+  return ['How are you, ', name, '?'].join();
+}
+
+// bad
+function sayHi(name) {
+  return `How are you, ${ name }?`;
+}
+
+// good
+function sayHi(name) {
+  return `How are you, ${name}?`;
+}
+```
+
+Never use eval() on a string, it opens too many vulnerabilities.
+
+Do not unnecessarily escape characters in strings.
+
+```javascript
+// bad
+const foo = '\'this\' \i\s \"quoted\"';
+
+// good
+const foo = '\'this\' is "quoted"';
+const foo = `my name is '${name}'`;
 ```

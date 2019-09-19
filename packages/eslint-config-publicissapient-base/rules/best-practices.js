@@ -11,6 +11,9 @@ module.exports = {
     // Array methods are specifically made to return Arrays so if no return
     // is required then a for/forEach loop is more appropriate.
 
-    'array-callback-return': 'error'
+    'array-callback-return': 'error',    
+
+    // eval is dangerous, don't use it
+    'no-eval': 'error'
   }
 };
