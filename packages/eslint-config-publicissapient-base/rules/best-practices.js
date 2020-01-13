@@ -18,6 +18,10 @@ module.exports = {
     'no-eval': 'error',
 
     // This requires that long strings are kept on one line.
-    'no-multi-str': 'error'
+    'no-multi-str': 'error',
+
+    // Use scrict comparisons (ie. ===, not ==)
+    
+    'eqeqeq': ['error', 'always'],
   }
 };
