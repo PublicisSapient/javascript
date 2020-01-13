@@ -533,7 +533,7 @@ Use `===` and `!==` over `==` and `!=`
 ```javascript
 ```
 
-- Use shortcuts for booleans, but explicit comparisons for strings and numbers
+Use shortcuts for booleans, but explicit comparisons for strings and numbers
 
 ```javascript
   // bad
@@ -555,7 +555,7 @@ Use `===` and `!==` over `==` and `!=`
   if (items.length > 0) { ... }
 ```
 
-- Do not nest ternary expressions
+Do not nest ternary expressions
 
 ```javascript
   // bad
@@ -578,7 +578,7 @@ Use `===` and `!==` over `==` and `!=`
   }
 ```
 
-- Do not use ternary expressions when simpler alternatives exist
+Do not use ternary expressions when simpler alternatives exist
 
 ```javascript
   // bad
