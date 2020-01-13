@@ -1,6 +1,8 @@
 module.exports = {
   rules: {
 
+    // Arrays
+
     // This requires array values to be on a separate line than the open and
     // close brackets but only if it uses multiple lines.
 
@@ -13,7 +15,6 @@ module.exports = {
    
     // This requires arrays to have a line break after each element if there
     // are more than 6 items in the array.
-    //
 
    'array-element-newline': ['error', { multiline: true, minItems: 6 }],
 
@@ -21,18 +22,20 @@ module.exports = {
 
    'no-array-constructor': 'error',
 
-   // Only single quotes for strings
+   // Strings
+
+   // This requires that all strings use single quotes
 
    'quotes': ['error', 'single'],
 
-   // Use template literals for concatenating strings
+   // This requires that progamatically generated strings use template literals
 
    'prefer-template': 'error',
 
-   // No spaces allowed in template literals
+   // This requires that there are no spaces in curly braces in template literals
    'template-curly-spacing': 'error',
    
-   // Escaping non-special characters in strings, template literals, and regular expressions doesn’t have any effect
+   // This requires that only characters that need escaping are escaped
    'no-useless-escape': ['error', 'never']
   }
 };

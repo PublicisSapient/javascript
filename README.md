@@ -7,6 +7,7 @@ A Javascript styleguide written from an enterprise perspective.
 1. [Accessors](#accessors)
 2. [Arrays](#arrays)
 3. [Strings](#strings)
+4. [Global](#global)
 
 ## Accessors
 
@@ -27,8 +28,8 @@ This pattern looks promising but has too many drawbacks to be used on a large pr
   // bad
   class User {
     constructor() {
-      this.firstName = 'John';
-      this.lastName = 'Smith';
+      this.firstName = 'Ada';
+      this.lastName = 'Lovelace';
     }
 
     get fullName() {
@@ -50,13 +51,13 @@ This pattern looks promising but has too many drawbacks to be used on a large pr
 
   // However since an object property can be named anything it will not be
   // thrown on setters
-  user.fulName = 'John Smith';
+  user.fulName = 'Edith Clarke';
 
   // good
   class User {
     constructor() {
-      this.firstName = 'John';
-      this.lastName = 'Smith';
+      this.firstName = 'Valerie';
+      this.lastName = 'Taylor';
     }
 
     getFullName() {
@@ -77,10 +78,10 @@ This pattern looks promising but has too many drawbacks to be used on a large pr
   user.getFulName();
 
   // An error will also be thrown here as well
-  user.setFulName('John Smith');
+  user.setFulName('Margaret Hamilton');
 
   // And it's more obvious that you're calling a function like this
-  user.setFullName('John Smith');
+  user.setFullName('Radia Perlman');
 ```
 
 ## Arrays
@@ -189,8 +190,8 @@ Add items to an Array using the `push` method.
 
 ```javascript
   planets.push({
-    name: 'Uranus',
-    color: 'blue'
+    name: 'Mercury',
+    color: 'red'
   });
 ```
 
@@ -261,12 +262,12 @@ Use a return statement with Array methods `every`, `filter`, `find`, `findIndex`
   // expected output: true
 
   // sort a list of words by their length with .sort()
-  const sortedWords = ['Orange', 'Grape', 'Strawberry'].sort((a, b) => {
+  const sortedWords = ['Gladys', 'Mae', 'West'].sort((a, b) => {
     // if returned value is less than 0 then 'a' is sorted before 'b'
     // otherwise 'b' is sorted before 'a'
       return a.length - b.length;
   });
-  // expected output: ['Grape', 'Orange', 'Strawberry']
+  // expected output: ['Mae', 'West', 'Gladys']
 
 ```
 
@@ -279,75 +280,109 @@ MDN Web Docs:
 ESLint Rules:
 
 * [`quotes`](https://eslint.org/docs/rules/quotes.html)
+* [`no-multi-str`](https://eslint.org/docs/rules/no-multi-str)
 * [`prefer-template`](https://eslint.org/docs/rules/prefer-template)
 * [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
-* [`no-eval`](https://eslint.org/docs/rules/no-eval)
 * [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
+* [`no-template-curly-in-string`](https://eslint.org/docs/rules/no-template-curly-in-string)
 
 Use single quotes '' for strings.
 
 ```javascript
 // bad
-const name = "I am a string";
-
-// bad - template literals should contain interpolation or newlines
-const name = `I am a string`;
+const name = "Ada Lovelace";
 
 // good
-const name = 'I am a string';
+const name = 'Grace Hopper';
+
+// good - this applies to strings in other places like import and require statements as well
+import myModule from './myModule';
+const myOtherModule = require('./myOtherModule');
 ```
 
-Strings that cause the line to go over 100 characters should not be written across multiple lines using string concatenation.
+Really long strings should be written as a single line and leave any line wrapping to the IDE or code editor.
 
 ```javascript
 // bad
-const errorMessage = 'This is a super long error that was thrown because \
-of Batman. When you stop to think about how Batman had anything to do \
-with this, you would get nowhere \
-fast.';
+const melbaRoyMouton = 'Melba Roy Mouton (1929-1990) was an African-American \
+woman who served as Assistant Chief of Research Programs at NASA\'s Trajectory \
+and Geodynamics Division in the 1960s and headed a group of NASA \
+mathematicians called "computers". Starting as a mathematician, she was head \
+mathematician for Echo Satellites 1 and 2, and she worked up to being a Head \
+Computer Programmer and then Program Production Section Chief at Goddard Space \
+Flight Center.';
 
 // bad
-const errorMessage = 'This is a super long error that was thrown because ' +
-  'of Batman. When you stop to think about how Batman had anything to do ' +
-  'with this, you would get nowhere fast.';
+const dorothyVaughan = 'Dorothy Johnson Vaughan (September 20, 1910 – November 10, 2008) ' +
+ 'was an African American mathematician and human computer who worked for the National ' +
+ 'Advisory Committee for Aeronautics (NACA), and NASA, at Langley Research Center in ' +
+ 'Hampton, Virginia. In 1949, she became acting supervisor of the West Area Computers, ' +
+ 'the first African-American woman to supervise a group of staff at the center.';
 
 // good
-const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+const katherineJohnson = 'Katherine Coleman Goble Johnson (born August 26, 1918) is an American mathematician whose calculations of orbital mechanics as a NASA employee were critical to the success of the first and subsequent U.S. crewed spaceflights. During her 35-year career at NASA and its predecessor, she earned a reputation for mastering complex manual calculations and helped pioneer the use of computers to perform the tasks. The space agency noted her "historical role as one of the first African-American women to work as a NASA scientist".';
 ```
 
-When programmatically building up strings, use template strings instead of concatenation.
+Use template strings instead of concatenation when building up strings programatically.
+
+```javascript
+const astronaut = 'Ellen Ochoa';
+
+// bad - don't use string literals templates if you don't have any embedded expressions
+const astronaut = `Ellen Ochoa`;
+
+// bad
+const goal = 'When I grow up I want to be an astronaut like ' + astronaut + '!';
+
+// bad
+const goal = ['When I grow up', 'I want to be', 'an astronaut', 'like', astronaut, '!'].join(' ');
+
+// good
+const goal = `When I grow up I want to be an astronaut like ${astronaut}!`;
+```
+
+Do not use template string notation inside of regular strings.  The output is not technically wrong however it is more than likely an unintentional mistake.
+
+```javascript
+const astronaut = 'Jenni Sydey';
+
+// bad
+const goal = 'When I grow up I want to be like ${astronaut}!';
+// expected output: 'When I grow up I want to be like ${astronaut}!'
+
+// good
+const goal = `When I grow up I want to be like ${astronaut}!`;
+// expectec output: 'When I grow up I want to be like Jenni Sydey!'
+```
+
+Only escape characters in strings that actually require escaping.
+
+```javascript
+// bad - the double quotes don't need escaping
+const anneMcClain = 'Anne\'s \call sign is \"Annimal\"';
+
+// good
+const anneMcClain = 'Anne\'s call sign is "Annimal"';
+```
+
+## Global
+
+ESLint Rules:
+
+* [`no-eval`](https://eslint.org/docs/rules/no-eval)
+
+Never use eval() in any circumstance. It is an enormous security risk.
 
 ```javascript
 // bad
-function sayHi(name) {
-  return 'How are you, ' + name + '?';
-}
+console.log(eval('2 + 2'));
+// expected output: 4
 
 // bad
-function sayHi(name) {
-  return ['How are you, ', name, '?'].join();
-}
+console.log(eval(new String('2 + 2')));
+// expected output: 2 + 2
 
 // bad
-function sayHi(name) {
-  return `How are you, ${ name }?`;
-}
-
-// good
-function sayHi(name) {
-  return `How are you, ${name}?`;
-}
-```
-
-Never use eval() on a string, it opens too many vulnerabilities.
-
-Do not unnecessarily escape characters in strings.
-
-```javascript
-// bad
-const foo = '\'this\' \i\s \"quoted\"';
-
-// good
-const foo = '\'this\' is "quoted"';
-const foo = `my name is '${name}'`;
+console.log(eval('2 + 2') === eval('4'));
+// expected output: true
 ```

@@ -13,7 +13,11 @@ module.exports = {
 
     'array-callback-return': 'error',    
 
-    // eval is dangerous, don't use it
-    'no-eval': 'error'
+    // eval has too many security risks to be used.
+  
+    'no-eval': 'error',
+
+    // This requires that long strings are kept on one line.
+    'no-multi-str': 'error'
   }
 };
