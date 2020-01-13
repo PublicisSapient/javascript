@@ -4,19 +4,14 @@ A Javascript styleguide written from an enterprise perspective.
 
 ## Table of Contents
 
-<<<<<<< HEAD
-1. [Accessors](#accessors)
-2. [Arrays](#arrays)
-3. [Strings](#strings)
-4. [Global](#global)
-=======
 - [PublicisSapient Javascript Styleguide](#publicissapient-javascript-styleguide)
   - [Table of Contents](#table-of-contents)
   - [Accessors](#accessors)
   - [Arrays](#arrays)
+  - [Strings](#strings)
+  - [Global](#global)
   - [Whitespace](#whitespace)
   - [Comparison Operators & Equality](#comparison-operators--equality)
->>>>>>> 3ce0e8cf88fc132995e3d3cfac6623b9ef57991d
 
 ## Accessors
 
@@ -284,16 +279,16 @@ Use a return statement with Array methods `every`, `filter`, `find`, `findIndex`
 
 MDN Web Docs:
 
-* [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+- [`string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ESLint Rules:
 
-* [`quotes`](https://eslint.org/docs/rules/quotes.html)
-* [`no-multi-str`](https://eslint.org/docs/rules/no-multi-str)
-* [`prefer-template`](https://eslint.org/docs/rules/prefer-template)
-* [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
-* [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
-* [`no-template-curly-in-string`](https://eslint.org/docs/rules/no-template-curly-in-string)
+- [`quotes`](https://eslint.org/docs/rules/quotes.html)
+- [`no-multi-str`](https://eslint.org/docs/rules/no-multi-str)
+- [`prefer-template`](https://eslint.org/docs/rules/prefer-template)
+- [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
+- [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
+- [`no-template-curly-in-string`](https://eslint.org/docs/rules/no-template-curly-in-string)
 
 Use single quotes '' for strings.
 
@@ -378,7 +373,7 @@ const anneMcClain = 'Anne\'s call sign is "Annimal"';
 
 ESLint Rules:
 
-* [`no-eval`](https://eslint.org/docs/rules/no-eval)
+- [`no-eval`](https://eslint.org/docs/rules/no-eval)
 
 Never use eval() in any circumstance. It is an enormous security risk.
 
