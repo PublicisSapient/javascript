@@ -23,5 +23,9 @@ module.exports = {
     // Use scrict comparisons (ie. ===, not ==)
     
     'eqeqeq': ['error', 'always'],
+
+    // This requires that all control statements use curly brackets.
+    // This is required for the SonarQube rule: Control structures should use curly braces.
+    'curly': 'error'
   }
 };

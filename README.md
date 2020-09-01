@@ -12,6 +12,7 @@ A Javascript styleguide written from an enterprise perspective.
   - [Global](#global)
   - [Whitespace](#whitespace)
   - [Comparison Operators & Equality](#comparison-operators--equality)
+  - [Control Statements](#control-statements)
 
 ## Accessors
 
@@ -402,6 +403,13 @@ ESLint rules:
 - [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops.html)
 - [`comma-spacing`](http://eslint.org/docs/rules/comma-spacing)
 - [`no-multiple-empty-lines`](http://eslint.org/docs/rules/no-multiple-empty-lines)
+- [`max-len`](http://eslint.org/docs/rules/max-len)
+- [`max-lines-per-function`](http://eslint.org/docs/rules/max-lines-per-function)
+
+SonarQube rules:
+
+- `Lines should not be too long`
+- [`Functions should not too many lines of code`](https://rules.sonarsource.com/javascript/RSPEC-138?search=Functions%20should%20not%20too%20many%20lines%20of%20code)
 
 Use a space before the opening brace of a block.
 
@@ -516,6 +524,36 @@ Leave a blank line between a block and the next statement.
   return obj;
 ```
 
+Each line of code should be no more than 100 characters. This helps with readability in an IDE as well as in pull requests. This includes all lines including strings, template literals, and comments.
+
+```javascript
+  // bad
+  const amazingPeople = { mathematicians = ['Katherine Johnson', 'Dorothy Vaughan'], scientists: ['Alice Ball', 'Mary Elliott Hill'], astronauts: ['Mae C. Jemison', 'Stephanie Wilson']};
+
+  // good
+  const amazingPeople = {
+    mathematicians = ['Katherine Johnson', 'Dorothy Vaughan'],
+    scientists: ['Alice Ball', 'Mary Elliott Hill'],
+    astronauts: ['Mae C. Jemison', 'Stephanie Wilson']
+  };
+
+  // bad
+  // This is a really long comment that should really be written in multiple lines but instead has been written in a single line.
+
+  // good
+  // This is a really long comment that has been written on multiple lines instad of on a single
+  // line so that it is easier to read.
+
+  // bad
+  const str = `this is a really long string that should really written over multiple lines but instead has been written in a single line`;
+
+  // good
+  const str = `this is a really long string that has been written over multiple lines instead
+  of being written in a single line`;
+```
+
+Each function should have no more than 200 lines to reduce complexity and increase testability. This is especially important in React components where the render functions can quickly get out of hand trying to do too much.  This includes all comments and whitespace but ignores IIFEs (Immediately Invoked Function Expressions) to match SonarQube functionality.
+
 ## Comparison Operators & Equality
 
 MDN web docs:
@@ -601,4 +639,34 @@ Do not use ternary expressions when simpler alternatives exist
 
   // good
   const value = newNumber || 1;
+```
+
+## Control Statements
+
+MDN web docs:
+  
+- [`Control Flow and Error Handling`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
+  
+ESLint rules:
+
+- [`curly`](https://eslint.org/docs/rules/curly.html)
+
+SonarQube rules:
+
+- [`Control structures should use curly braces`](https://rules.sonarsource.com/javascript/RSPEC-121?search=Control%20structures%20should%20use%20curly%20braces)
+
+Use curly braces {...} for all block statements including `if`, `else`, `for`, `while`, and `do`.  These braces are technically optional when there is only one line however omitting them leads to inconsistent code that is prone to errors in the future.
+
+```javascript
+  // bad
+  if (error) return false;
+
+  // bad
+  if (error)
+    return false;
+
+  // good
+  if (error) {
+    return false;
+  }
 ```
