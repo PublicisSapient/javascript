@@ -408,8 +408,8 @@ ESLint rules:
 
 SonarQube rules:
 
-- `Lines should not be too long`
-- [`Functions should not too many lines of code`](https://rules.sonarsource.com/javascript/RSPEC-138?search=Functions%20should%20not%20too%20many%20lines%20of%20code)
+- [`Lines should not be too long`](https://rules.sonarsource.com/javascript/RSPEC-103)
+- [`Functions should not have too many lines of code`](https://rules.sonarsource.com/javascript/RSPEC-138)
 
 Use a space before the opening brace of a block.
 
@@ -541,7 +541,7 @@ Each line of code should be no more than 100 characters. This helps with readabi
   // This is a really long comment that should really be written in multiple lines but instead has been written in a single line.
 
   // good
-  // This is a really long comment that has been written on multiple lines instad of on a single
+  // This is a really long comment that has been written on multiple lines instead of on a single
   // line so that it is easier to read.
 
   // bad
