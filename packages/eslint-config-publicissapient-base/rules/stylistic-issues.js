@@ -68,6 +68,14 @@ module.exports = {
 
    // Do not use ternary expressions when simpler alternatives exist 
 
-   'no-unneeded-ternary': 'error'
+   'no-unneeded-ternary': 'error',
+
+   // Limit line lengths to 180 characters. This is in line with the defaults in SonarQube rule: Lines should not be too long
+   
+   'max-len': ['error', 180, 2, { ignoreUrls: true, ignoreComments: false, ignoreStrings: false, ignoreTemplateLiterals: false}],
+
+   // Limit the number of lines in a function to 200. This is in line with the defaults in SonarQube rule: Functions should not too many lines of code
+
+   'max-lines-per-function': ['error', 200]
   }
 };
