@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/PublicisSapient/javascript#readme",
   "devDependencies": {
-    "markdownlint-cli": "^0.13.0"
+    "markdownlint-cli": "^0.27.1"
   }
 }
