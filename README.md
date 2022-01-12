@@ -176,6 +176,21 @@ If there are more than 5 elements in an array use line breaks to put each value 
   ];
 ```
 
+Don't use sparse arrays which have "holes" where commas are not preceded by elements. It does not apply to a trailing comma following the last element.
+
+```javascript
+  //bad
+  var items = [,];
+  var planets = [ 'Mercury',, 'Venus' ];
+
+  //good
+  var items = [];
+  var items = new Array(23);
+
+  // trailing comma (after the last element) is not a problem
+  var planets = [ 'Mercury', 'Venus', ];
+```
+
 Get the value of an item in an Array by using the index.
 
 ```javascript
@@ -368,6 +383,20 @@ const anneMcClain = 'Anne\'s \call sign is \"Annimal\"';
 
 // good
 const anneMcClain = 'Anne\'s call sign is "Annimal"';
+```
+
+Don't use spacing between curly brackets.
+```javascript
+//bad 
+const goal = `When I grow up I want to be like ${ astronaut}!`
+const goal = `When I grow up I want to be like ${astronaut }!`
+const goal = `When I grow up I want to be like ${ astronaut }!`
+
+//good
+const goal = `When I grow up I want to be like ${astronaut}!`
+const goal = `When I grow up I want to be like ${
+  astronaut
+}!`
 ```
 
 ## Global
