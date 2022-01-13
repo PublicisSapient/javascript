@@ -386,6 +386,7 @@ const anneMcClain = 'Anne\'s call sign is "Annimal"';
 ```
 
 Don't use spacing between curly brackets.
+
 ```javascript
 //bad 
 const goal = `When I grow up I want to be like ${ astronaut}!`
