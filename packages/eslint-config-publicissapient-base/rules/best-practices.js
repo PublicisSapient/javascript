@@ -26,6 +26,14 @@ module.exports = {
 
     // This requires that all control statements use curly brackets.
     // This is required for the SonarQube rule: Control structures should use curly braces.
-    'curly': 'error'
+    'curly': 'error',
+
+    // This disallows the use of yoda conditions
+
+    'yoda': 'error',
+
+    // This requires that imports from the same module must be on the same line
+
+    'no-duplicate-imports': 'error'
   }
 };

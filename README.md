@@ -405,6 +405,7 @@ const goal = `When I grow up I want to be like ${
 ESLint Rules:
 
 - [`no-eval`](https://eslint.org/docs/rules/no-eval)
+- [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
 
 Never use eval() in any circumstance. It is an enormous security risk.
 
@@ -422,6 +423,23 @@ console.log(eval('2 + 2') === eval('4'));
 // expected output: true
 ```
 
+When importing multiple members of a module, ensure they are not on different lines
+
+```javascript
+// bad
+import { merge } from 'module';
+import something from 'another-module';
+import { find } from 'module';
+
+//good
+import { merge, find } from 'module';
+import something from 'another-module';
+
+// not mergeable 
+import { merge } from 'module';
+import * as something from 'module';
+```
+
 ## Whitespace
 
 ESLint rules:
@@ -435,6 +453,9 @@ ESLint rules:
 - [`no-multiple-empty-lines`](http://eslint.org/docs/rules/no-multiple-empty-lines)
 - [`max-len`](http://eslint.org/docs/rules/max-len)
 - [`max-lines-per-function`](http://eslint.org/docs/rules/max-lines-per-function)
+- [`no-trailing-spaces`](http://eslint.org/docs/rules/no-trailing-spaces)
+- [`no-multiple-spaces`](http://eslint.org/docs/rules/no-multiple-spaces)
+- [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing)
 
 SonarQube rules:
 
@@ -499,6 +520,48 @@ Use a space after commas.
   // good
   const list = [1, 2, 3, 4]
   function fullName (firstName, lastName) { ... }
+```
+
+Use spaces between arrow functions arrow.
+
+```javascript
+  //bad
+  ()=> {};
+  () =>{};
+  a =>a;
+  a=> a;
+
+  //good
+  () => {};
+  a => a;
+```
+
+Do not use trailing spaces at the end of code or on blank lines.
+
+```javascript
+  // bad
+  const list = [1, 2, 3, 4];//•••••
+  function fullName (firstName, lastName) { ... };//••
+  //•••••
+
+  //good
+  const list = [1, 2, 3, 4];
+  function fullName (firstName, lastName) { ... };
+```
+Do not use multiple spaces 
+
+```javascript
+  //bad
+  if (condition) { ...  }
+  const list = [1, 2, 3,  4];
+  const a = b +  10;
+  a ?  b: c
+
+  //good
+  if (condition) { ... }
+  const list = [1, 2, 3, 4];
+  const a = b + 10;
+  a ? b: c
 ```
 
 Do not leave multiple blank lines.
@@ -680,6 +743,7 @@ MDN web docs:
 ESLint rules:
 
 - [`curly`](https://eslint.org/docs/rules/curly.html)
+- [`yoda`](https://eslint.org/docs/rules/yoda)
 
 SonarQube rules:
 
@@ -698,5 +762,31 @@ Use curly braces {...} for all block statements including `if`, `else`, `for`, `
   // good
   if (error) {
     return false;
+  }
+```
+
+Do not use yoda conditions. A yoda condition is where the literal value is before the variable, similar to how yoda would speak.
+
+```javascript
+  // bad
+  if ('red' === color) {
+    // ...
+  }
+  if (5 > count) {
+    // ...
+  }
+  if (0 <= x && x < 1) {
+    // ...
+  }
+
+  // good
+  if (color === 'red') {
+    // ...
+  }
+  if (count < 5) {
+    // ...
+  }
+  if (x >= 0 && x < 1) {
+    // ...
   }
 ```
