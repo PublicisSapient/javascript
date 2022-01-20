@@ -176,6 +176,21 @@ If there are more than 5 elements in an array use line breaks to put each value 
   ];
 ```
 
+Don't use sparse arrays which have "holes" where commas are not preceded by elements. It does not apply to a trailing comma following the last element.
+
+```javascript
+  //bad
+  var items = [,];
+  var planets = [ 'Mercury',, 'Venus' ];
+
+  //good
+  var items = [];
+  var items = new Array(23);
+
+  // trailing comma (after the last element) is not a problem
+  var planets = [ 'Mercury', 'Venus', ];
+```
+
 Get the value of an item in an Array by using the index.
 
 ```javascript
@@ -294,80 +309,95 @@ ESLint Rules:
 Use single quotes '' for strings.
 
 ```javascript
-// bad
-const name = "Ada Lovelace";
+  // bad
+  const name = "Ada Lovelace";
 
-// good
-const name = 'Grace Hopper';
+  // good
+  const name = 'Grace Hopper';
 
-// good - this applies to strings in other places like import and require statements as well
-import myModule from './myModule';
-const myOtherModule = require('./myOtherModule');
+  // good - this applies to strings in other places like import and require statements as well
+  import myModule from './myModule';
+  const myOtherModule = require('./myOtherModule');
 ```
 
 Really long strings should be written as a single line and leave any line wrapping to the IDE or code editor.
 
 ```javascript
 // bad
-const melbaRoyMouton = 'Melba Roy Mouton (1929-1990) was an African-American \
-woman who served as Assistant Chief of Research Programs at NASA\'s Trajectory \
-and Geodynamics Division in the 1960s and headed a group of NASA \
-mathematicians called "computers". Starting as a mathematician, she was head \
-mathematician for Echo Satellites 1 and 2, and she worked up to being a Head \
-Computer Programmer and then Program Production Section Chief at Goddard Space \
-Flight Center.';
+  const melbaRoyMouton = 'Melba Roy Mouton (1929-1990) was an African-American \
+  woman who served as Assistant Chief of Research Programs at NASA\'s Trajectory \
+  and Geodynamics Division in the 1960s and headed a group of NASA \
+  mathematicians called "computers". Starting as a mathematician, she was head \
+  mathematician for Echo Satellites 1 and 2, and she worked up to being a Head \
+  Computer Programmer and then Program Production Section Chief at Goddard Space \
+  Flight Center.';
 
-// bad
-const dorothyVaughan = 'Dorothy Johnson Vaughan (September 20, 1910 – November 10, 2008) ' +
- 'was an African American mathematician and human computer who worked for the National ' +
- 'Advisory Committee for Aeronautics (NACA), and NASA, at Langley Research Center in ' +
- 'Hampton, Virginia. In 1949, she became acting supervisor of the West Area Computers, ' +
- 'the first African-American woman to supervise a group of staff at the center.';
+  // bad
+  const dorothyVaughan = 'Dorothy Johnson Vaughan (September 20, 1910 – November 10, 2008) ' +
+  'was an African American mathematician and human computer who worked for the National ' +
+  'Advisory Committee for Aeronautics (NACA), and NASA, at Langley Research Center in ' +
+  'Hampton, Virginia. In 1949, she became acting supervisor of the West Area Computers, ' +
+  'the first African-American woman to supervise a group of staff at the center.';
 
-// good
-const katherineJohnson = 'Katherine Coleman Goble Johnson (born August 26, 1918) is an American mathematician whose calculations of orbital mechanics as a NASA employee were critical to the success of the first and subsequent U.S. crewed spaceflights. During her 35-year career at NASA and its predecessor, she earned a reputation for mastering complex manual calculations and helped pioneer the use of computers to perform the tasks. The space agency noted her "historical role as one of the first African-American women to work as a NASA scientist".';
+  // good
+  const katherineJohnson = 'Katherine Coleman Goble Johnson (born August 26, 1918) is an American mathematician whose calculations of orbital mechanics as a NASA employee were critical to the success of the first and subsequent U.S. crewed spaceflights. During her 35-year career at NASA and its predecessor, she earned a reputation for mastering complex manual calculations and helped pioneer the use of computers to perform the tasks. The space agency noted her "historical role as one of the first African-American women to work as a NASA scientist".';
 ```
 
 Use template strings instead of concatenation when building up strings programatically.
 
 ```javascript
-const astronaut = 'Ellen Ochoa';
+  const astronaut = 'Ellen Ochoa';
 
-// bad - don't use string literals templates if you don't have any embedded expressions
-const astronaut = `Ellen Ochoa`;
+  // bad - don't use string literals templates if you don't have any embedded expressions
+  const astronaut = `Ellen Ochoa`;
 
-// bad
-const goal = 'When I grow up I want to be an astronaut like ' + astronaut + '!';
+  // bad
+  const goal = 'When I grow up I want to be an astronaut like ' + astronaut + '!';
 
-// bad
-const goal = ['When I grow up', 'I want to be', 'an astronaut', 'like', astronaut, '!'].join(' ');
+  // bad
+  const goal = ['When I grow up', 'I want to be', 'an astronaut', 'like', astronaut, '!'].join(' ');
 
-// good
-const goal = `When I grow up I want to be an astronaut like ${astronaut}!`;
+  // good
+  const goal = `When I grow up I want to be an astronaut like ${astronaut}!`;
 ```
 
 Do not use template string notation inside of regular strings.  The output is not technically wrong however it is more than likely an unintentional mistake.
 
 ```javascript
-const astronaut = 'Jenni Sydey';
+  const astronaut = 'Jenni Sydey';
 
-// bad
-const goal = 'When I grow up I want to be like ${astronaut}!';
-// expected output: 'When I grow up I want to be like ${astronaut}!'
+  // bad
+  const goal = 'When I grow up I want to be like ${astronaut}!';
+  // expected output: 'When I grow up I want to be like ${astronaut}!'
 
-// good
-const goal = `When I grow up I want to be like ${astronaut}!`;
-// expectec output: 'When I grow up I want to be like Jenni Sydey!'
+  // good
+  const goal = `When I grow up I want to be like ${astronaut}!`;
+  // expectec output: 'When I grow up I want to be like Jenni Sydey!'
 ```
 
 Only escape characters in strings that actually require escaping.
 
 ```javascript
-// bad - the double quotes don't need escaping
-const anneMcClain = 'Anne\'s \call sign is \"Annimal\"';
+  // bad - the double quotes don't need escaping
+  const anneMcClain = 'Anne\'s \call sign is \"Annimal\"';
 
-// good
-const anneMcClain = 'Anne\'s call sign is "Annimal"';
+  // good
+  const anneMcClain = 'Anne\'s call sign is "Annimal"';
+```
+
+Don't use spacing between curly brackets.
+
+```javascript
+  //bad 
+  const goal = `When I grow up I want to be like ${ astronaut}!`
+  const goal = `When I grow up I want to be like ${astronaut }!`
+  const goal = `When I grow up I want to be like ${ astronaut }!`
+
+  //good
+  const goal = `When I grow up I want to be like ${astronaut}!`
+  const goal = `When I grow up I want to be like ${
+    astronaut
+  }!`
 ```
 
 ## Global
@@ -375,21 +405,39 @@ const anneMcClain = 'Anne\'s call sign is "Annimal"';
 ESLint Rules:
 
 - [`no-eval`](https://eslint.org/docs/rules/no-eval)
+- [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
 
 Never use eval() in any circumstance. It is an enormous security risk.
 
 ```javascript
-// bad
-console.log(eval('2 + 2'));
-// expected output: 4
+  // bad
+  console.log(eval('2 + 2'));
+  // expected output: 4
 
-// bad
-console.log(eval(new String('2 + 2')));
-// expected output: 2 + 2
+  // bad
+  console.log(eval(new String('2 + 2')));
+  // expected output: 2 + 2
 
+  // bad
+  console.log(eval('2 + 2') === eval('4'));
+  // expected output: true
+```
+
+When importing multiple members of a module, ensure they are not on different lines
+
+```javascript
 // bad
-console.log(eval('2 + 2') === eval('4'));
-// expected output: true
+  import {merge} from 'module';
+  import something from 'another-module';
+  import {find} from 'module';
+
+  //good
+  import {merge, find} from 'module';
+  import something from 'another-module';
+
+  // not mergeable 
+  import {merge} from 'module';
+  import * as something from 'module';
 ```
 
 ## Whitespace
@@ -405,6 +453,9 @@ ESLint rules:
 - [`no-multiple-empty-lines`](http://eslint.org/docs/rules/no-multiple-empty-lines)
 - [`max-len`](http://eslint.org/docs/rules/max-len)
 - [`max-lines-per-function`](http://eslint.org/docs/rules/max-lines-per-function)
+- [`no-trailing-spaces`](http://eslint.org/docs/rules/no-trailing-spaces)
+- [`no-multiple-spaces`](http://eslint.org/docs/rules/no-multiple-spaces)
+- [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing)
 
 SonarQube rules:
 
@@ -443,10 +494,10 @@ Use a space before opening parenthesis in control statements (`if`, `while`, etc
 
 ```javascript
   // bad
-  if(condition) { ... }
+  if(condition) {...}
 
   // good
-  if (condition) { ... }
+  if (condition) {...}
 ```
 
 Use spaces between operators.
@@ -464,11 +515,54 @@ Use a space after commas.
 ```javascript
   // bad
   const list = [1,2,3,4]
-  function fullName (firstName,lastName) { ... }
+  function fullName (firstName,lastName) {...}
 
   // good
   const list = [1, 2, 3, 4]
-  function fullName (firstName, lastName) { ... }
+  function fullName (firstName, lastName) {...}
+```
+
+Use spaces between arrow functions arrow.
+
+```javascript
+  //bad
+  ()=> {};
+  () =>{};
+  a =>a;
+  a=> a;
+
+  //good
+  () => {};
+  a => a;
+```
+
+Do not use trailing spaces at the end of code or on blank lines.
+
+```javascript
+  // bad
+  const list = [1, 2, 3, 4];//•••••
+  function fullName (firstName, lastName) {...};//••
+  //•••••
+
+  //good
+  const list = [1, 2, 3, 4];
+  function fullName (firstName, lastName) {...};
+```
+
+Do not use multiple spaces
+
+```javascript
+  //bad
+  if (condition) {...}
+  const list = [1, 2, 3,  4];
+  const a = b +  10;
+  a ?  b: c
+
+  //good
+  if (condition) {...}
+  const list = [1, 2, 3, 4];
+  const a = b + 10;
+  a ? b: c
 ```
 
 Do not leave multiple blank lines.
@@ -528,7 +622,7 @@ Each line of code should be no more than 100 characters. This helps with readabi
 
 ```javascript
   // bad
-  const amazingPeople = { mathematicians = ['Katherine Johnson', 'Dorothy Vaughan'], scientists: ['Alice Ball', 'Mary Elliott Hill'], astronauts: ['Mae C. Jemison', 'Stephanie Wilson']};
+  const amazingPeople = {mathematicians = ['Katherine Johnson', 'Dorothy Vaughan'], scientists: ['Alice Ball', 'Mary Elliott Hill'], astronauts: ['Mae C. Jemison', 'Stephanie Wilson']};
 
   // good
   const amazingPeople = {
@@ -575,22 +669,22 @@ Use shortcuts for booleans, but explicit comparisons for strings and numbers
 
 ```javascript
   // bad
-  if (isLoaded === true) { ... }
+  if (isLoaded === true) {...}
 
   // good
-  if (isLoaded) { ... }
+  if (isLoaded) {...}
 
   // bad
-  if (value) { ... }
+  if (value) {...}
 
   // good
-  if (value !== '') { ... }
+  if (value !== '') {...}
 
   // bad
-  if (items.length) { ... }
+  if (items.length) {...}
 
   // good
-  if (items.length > 0) { ... }
+  if (items.length > 0) {...}
 ```
 
 Do not nest ternary expressions
@@ -650,6 +744,7 @@ MDN web docs:
 ESLint rules:
 
 - [`curly`](https://eslint.org/docs/rules/curly.html)
+- [`yoda`](https://eslint.org/docs/rules/yoda)
 
 SonarQube rules:
 
@@ -668,5 +763,31 @@ Use curly braces {...} for all block statements including `if`, `else`, `for`, `
   // good
   if (error) {
     return false;
+  }
+```
+
+Do not use yoda conditions. A yoda condition is where the literal value is before the variable, similar to how yoda would speak.
+
+```javascript
+  // bad
+  if ('red' === color) {
+    // ...
+  }
+  if (5 > count) {
+    // ...
+  }
+  if (0 <= x && x < 1) {
+    // ...
+  }
+
+  // good
+  if (color === 'red') {
+    // ...
+  }
+  if (count < 5) {
+    // ...
+  }
+  if (x >= 0 && x < 1) {
+    // ...
   }
 ```

@@ -76,6 +76,18 @@ module.exports = {
 
    // Limit the number of lines in a function to 200. This is in line with the defaults in SonarQube rule: Functions should not too many lines of code
 
-   'max-lines-per-function': ['error', 200]
+   'max-lines-per-function': ['error', 200],
+
+   // Disallow the use of trailing spaces
+
+   'no-trailing-spaces': 'error',
+
+   // Disallow the use of multiple spaces
+
+   'no-multi-spaces': 'error',
+
+   //Standardize arrow spacing
+
+   'arrow-spacing': 'error'
   }
 };
