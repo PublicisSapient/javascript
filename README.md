@@ -548,7 +548,8 @@ Do not use trailing spaces at the end of code or on blank lines.
   const list = [1, 2, 3, 4];
   function fullName (firstName, lastName) {...};
 ```
-Do not use multiple spaces 
+
+Do not use multiple spaces
 
 ```javascript
   //bad
